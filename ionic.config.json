@@ -1,5 +1,7 @@
 {
   "name": "teamer-bai-mobile",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
