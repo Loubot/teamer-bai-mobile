@@ -5,7 +5,7 @@ import {
     NavController
 } from 'ionic-angular';
 declare var http;
-import { HTTP } from '@ionic-native/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -13,15 +13,15 @@ import { HTTP } from '@ionic-native/http';
     templateUrl: 'home.html'
 })
 export class HomePage {
-    sayHello(){
-        alert('a')
-    }
-    constructor(public navCtrl: NavController, private http: HTTP ) {
+    
+    constructor(public navCtrl: NavController, public httpClient: HttpClient ) {
         
-        this.http.post( 'http://localhost:5000/register', { email: 'lllouis@yahoo.com', password: 'pass' }, {} ).then( data => {
+        
+    }
+
+    sayHello(){
+        this.httpClient.post( 'http://localhost:5000/register', { email: 'lllouis@yahoo.com', password: 'pass' }, {} ).subscribe( data => {
             console.log( data )
-        }).catch( err => {
-            console.log( err )
         })
     }
 
