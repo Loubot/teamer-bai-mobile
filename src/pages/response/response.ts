@@ -22,7 +22,7 @@ export class Response {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, private storage: Storage) {
         // If we navigated to this page, we will have an item available as a nav param
-        alert('1')
+        
         this.storage.get('token').then(data => {
             this.token = data
             console.log( "Bearer " + this.token )
