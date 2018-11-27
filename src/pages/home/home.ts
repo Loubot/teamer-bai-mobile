@@ -5,7 +5,10 @@ import {
     NavController
 } from 'ionic-angular';
 declare var http;
-import { HttpClient } from '@angular/common/http';
+import {
+    HttpClient
+} from '@angular/common/http';
+import { ListPage } from '../list/list'
 
 
 @Component({
@@ -13,15 +16,19 @@ import { HttpClient } from '@angular/common/http';
     templateUrl: 'home.html'
 })
 export class HomePage {
-    
-    constructor(public navCtrl: NavController, public httpClient: HttpClient ) {
-        
-        
-    }
 
-    sayHello(){
-        this.httpClient.post( 'http://localhost:5000/register', { email: 'lllouis@yahoo.com', password: 'pass' }, {} ).subscribe( data => {
-            console.log( data )
+    constructor(public navCtrl: NavController, public httpClient: HttpClient) {
+
+
+    }
+    todo = {}
+    logForm() {
+
+        this.httpClient.post('http://localhost:5000/login', {
+            email: 'lllouis@yahoo.com',
+            password: 'pass'
+        }, {}).subscribe(data => {
+            this.navCtrl.push( ListPage )
         })
     }
 
