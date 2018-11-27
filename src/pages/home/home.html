@@ -11,11 +11,11 @@
 
     <form (ngSubmit)="logForm()">
         <ion-item>
-            <ion-input type="text" [(ngModel)]="todo.title" placeholder="Email" name="Email"></ion-input>
+            <ion-input type="text" [(ngModel)]="login.email" placeholder="Email" name="Email"></ion-input>
         </ion-item>
         <ion-item>
             
-            <ion-input [(ngModel)]="todo.description" placeholder="Password" name="password"></ion-input>
+            <ion-input [(ngModel)]="login.password" placeholder="Password" name="password" type="password"></ion-input>
         </ion-item>
         <button ion-button type="submit" block>Register</button>
     </form>
