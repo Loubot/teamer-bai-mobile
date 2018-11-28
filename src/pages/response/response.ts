@@ -18,7 +18,8 @@ import {
 })
 export class Response {
     token = null;
-    httpOptions = null 
+    httpOptions = null
+    user = {}
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, private storage: Storage) {
         // If we navigated to this page, we will have an item available as a nav param
@@ -33,7 +34,7 @@ export class Response {
               };
             this.httpClient.get('http://localhost:5000/event/user/1', this.httpOptions ).subscribe(data => {
                 console.log(data)
-                
+                this.user = data
 
             })
         })
