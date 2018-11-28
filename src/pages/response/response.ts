@@ -25,7 +25,6 @@ export class Response {
         
         this.storage.get('token').then(data => {
             this.token = data
-            console.log( "Bearer " + this.token )
             this.httpOptions = {
                 headers: new HttpHeaders({
                   'Content-Type':  'application/json',

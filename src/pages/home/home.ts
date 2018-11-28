@@ -28,7 +28,7 @@ export class HomePage {
             email: 'lllouis@yahoo.com',
             password: 'pass'
         }, {}).subscribe(data => {
-            console.log(data)
+            // console.log(data)
             this.storage.set( 'token', data )
             
             this.navCtrl.push(Response)
