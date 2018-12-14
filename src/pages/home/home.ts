@@ -35,7 +35,10 @@ export class HomePage {
         })
 
     }
-    login = {};
+    public login = {
+        email: "",
+        password: ""
+    }
     logForm() {
         this.httpClient.post('http://localhost:5000/login', {
             email: this.login.email,
