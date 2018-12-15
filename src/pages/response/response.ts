@@ -65,7 +65,7 @@ export class Response {
         this.actionSheetCtrl.create({
             title: 'Modify your album',
             buttons: [{
-                text: 'Destructive',
+                text: 'Decline ',
                 role: 'destructive',
                 cssClass: 'not_confirmed',
                 handler: () => {
