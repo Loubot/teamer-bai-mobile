@@ -14,3 +14,16 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.white_text{
+    color: rgb(255, 255, 255) !important;
+    opacity: 1 !important;
+}
+
+.confirmed{
+    background-color: rgb(140, 198, 152);
+}
+
+.not_confirmed{
+    background-color: rgb(226, 156, 174)
+}
