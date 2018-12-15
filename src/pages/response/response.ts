@@ -67,18 +67,27 @@ export class Response {
             buttons: [{
                 text: 'Destructive',
                 role: 'destructive',
+                cssClass: 'not_confirmed',
                 handler: () => {
-                    console.log('Destructive clicked');
+                    console.log( '1' )
+                    this.httpClient.put('http://localhost:5000/invitations/' + invite.Event.id + '/user/' + 1, 
+                    { confirm: false },
+                    this.httpOptions).subscribe(data => {
+                        console.log(data)
+                        this.invitations = data
+
+                    })
                 }
             }, {
                 text: 'Accept',
                 cssClass: 'confirmed',
                 handler: () => {
-                    this.httpClient.put('http://localhost:5000/invitations/' + invite.Event.id, 
+                    console.log( '2' )
+                    this.httpClient.put('http://localhost:5000/invitations/' + invite.Event.id + '/user/' + 1, 
                     { confirm: true },
                     this.httpOptions).subscribe(data => {
                         console.log(data)
-                        this.invitation = data
+                        this.invitations = data
 
                     })
                 }
