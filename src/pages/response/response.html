@@ -11,22 +11,12 @@
 
     <ion-list>
         <ion-item *ngFor="let invite of invitations"  [ngClass]="invite.confirm  ? 'confirmed' : 'not_confirmed' ">
-            <ion-label class="white_text">Match time: </ion-label>
-            <ion-datetime class="white_text" displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="invite.Event.startTime" disabled></ion-datetime>
+            <ion-label class="white_text" >Match time: </ion-label>
+            <ion-datetime class="white_text"  displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="invite.Event.startTime" disabled></ion-datetime>
+            
         </ion-item>
     </ion-list>
 
 
-    <ion-list>
-        <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-            <ion-icon [name]="item.icon" item-start></ion-icon>
-            {{item.title}}
-            <div class="item-note" item-end>
-                {{item.note}}
-            </div>
-        </button>
-    </ion-list>
-    <div *ngIf="selectedItem" padding>
-        You navigated here from <b>{{selectedItem.title}}</b>
-    </div>
+    <button (click)="hello()">a</button>
 </ion-content>
