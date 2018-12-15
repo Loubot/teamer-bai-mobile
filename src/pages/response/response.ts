@@ -16,7 +16,9 @@ import {
 import {
     ActionSheetController
 } from 'ionic-angular';
-import { hasLifecycleHook } from '@angular/compiler/src/lifecycle_reflector';
+import {
+    hasLifecycleHook
+} from '@angular/compiler/src/lifecycle_reflector';
 
 @Component({
     selector: 'Response',
@@ -25,14 +27,15 @@ import { hasLifecycleHook } from '@angular/compiler/src/lifecycle_reflector';
 export class Response {
     token = null;
     httpOptions = null
+    invitation = null
     invitations = null
     presentActionSheet = null
     constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, private storage: Storage,
         public actionSheetCtrl: ActionSheetController) {
         // If we navigated to this page, we will have an item available as a nav param
 
-        
-        
+
+
         this.storage.get('token').then(data => {
             this.token = data
             this.httpOptions = {
@@ -51,31 +54,42 @@ export class Response {
     }
 
 
-    hello(){
-        console.log( this.actionSheetCtrl.create )
+    respond_to_invite(invite) {
+        console.log(invite)
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + this.token
+            })
+        };
         this.actionSheetCtrl.create({
             title: 'Modify your album',
-            buttons: [
-              {
+            buttons: [{
                 text: 'Destructive',
                 role: 'destructive',
                 handler: () => {
-                  console.log('Destructive clicked');
+                    console.log('Destructive clicked');
                 }
-              },{
-                text: 'Archive',
+            }, {
+                text: 'Accept',
+                cssClass: 'confirmed',
                 handler: () => {
-                  console.log('Archive clicked');
+                    this.httpClient.put('http://localhost:5000/invitations/' + invite.Event.id, 
+                    { confirm: true },
+                    this.httpOptions).subscribe(data => {
+                        console.log(data)
+                        this.invitation = data
+
+                    })
                 }
-              },{
+            }, {
                 text: 'Cancel',
                 role: 'cancel',
                 handler: () => {
-                  console.log('Cancel clicked');
+                    console.log('Cancel clicked');
                 }
-              }
-            ]
-          }).present()
+            }]
+        }).present()
     }
 
 }

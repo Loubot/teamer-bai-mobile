@@ -10,13 +10,11 @@
 <ion-content>
 
     <ion-list>
-        <ion-item *ngFor="let invite of invitations"  [ngClass]="invite.confirm  ? 'confirmed' : 'not_confirmed' ">
+        <ion-item (click)="respond_to_invite( invite )" *ngFor="let invite of invitations"  [ngClass]="invite.confirm  ? 'confirmed' : 'not_confirmed' ">
             <ion-label class="white_text" >Match time: </ion-label>
             <ion-datetime class="white_text"  displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="invite.Event.startTime" disabled></ion-datetime>
             
         </ion-item>
     </ion-list>
 
-
-    <button (click)="hello()">a</button>
 </ion-content>
