@@ -26,7 +26,7 @@ import {
 export class MyApp {
     @ViewChild(Nav) nav: Nav;
 
-    rootPage: any = Response;
+    rootPage: any = HomePage;
 
     pages: Array < {
         title: string,
