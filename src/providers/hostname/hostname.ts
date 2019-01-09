@@ -10,8 +10,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HostnameProvider {
   
-  public hostname = 'http://localhost:5000/'
-  
+  // public hostname = 'http://localhost:5000/'
+  public histname = "https://teamer-bai.herokuapp.com/"
   
 
 }
