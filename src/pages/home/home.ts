@@ -32,7 +32,6 @@ export class HomePage {
             password: 'pass'
         }, {}).subscribe( data => {
             console.log( data)
-            this.global.hostname = 'b'
             console.log( this.global.hostname )
             this.storage.set( 'token', data[0] )
             this.storage.set( 'user', data[1] )

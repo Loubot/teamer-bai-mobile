@@ -10,7 +10,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HostnameProvider {
   
-  public hostname: string;
+  public hostname = 'http://localhost:5000/'
+  
   
 
 }
