@@ -27,7 +27,7 @@ export class HomePage {
    
     constructor( public navCtrl: NavController, public httpClient: HttpClient, private storage: Storage, public global: HostnameProvider ) {
         
-        this.httpClient.post('http://localhost:5000/login', {
+        this.httpClient.post( this.global.hostname + 'login', {
             email: 'lllouis@yahoo.com',
             password: 'pass'
         }, {}).subscribe( data => {
@@ -44,7 +44,7 @@ export class HomePage {
         password: ""
     }
     logForm() {
-        this.httpClient.post('http://localhost:5000/login', {
+        this.httpClient.post( this.global.hostname + 'login', {
             email: this.login.email,
             password: this.login.password
         }, {}).subscribe(data => {
