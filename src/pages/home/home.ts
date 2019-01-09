@@ -35,6 +35,8 @@ export class HomePage {
             console.log( this.global.hostname )
             this.storage.set( 'token', data[0] )
             this.storage.set( 'user', data[1] )
+            alert( 'a' )
+            alert( data )
             this.navCtrl.push(Response)
         })
 

@@ -19,6 +19,7 @@ import {
 import {
     hasLifecycleHook
 } from '@angular/compiler/src/lifecycle_reflector';
+import { HostnameProvider } from '../../providers/hostname/hostname';
 
 @Component({
     selector: 'Response',
@@ -31,7 +32,7 @@ export class Response {
     invitations = null
     presentActionSheet = null
     constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, private storage: Storage,
-        public actionSheetCtrl: ActionSheetController) {
+        public actionSheetCtrl: ActionSheetController, public global: HostnameProvider ) {
         // If we navigated to this page, we will have an item available as a nav param
 
         // this.storage.get( 'user' ).then( user => {
@@ -46,7 +47,7 @@ export class Response {
                     'Authorization': "Bearer " + this.token
                 })
             };
-            this.httpClient.get( 'http://localhost:5000/invitations/user/1', this.httpOptions ).subscribe(data => {
+            this.httpClient.get( this.global.hostname + 'invitations/user/1', this.httpOptions ).subscribe(data => {
                 console.log(data)
                 this.invitations = data
 
@@ -72,7 +73,7 @@ export class Response {
                 cssClass: 'not_confirmed',
                 handler: () => {
                     console.log( '1' )
-                    this.httpClient.put('http://localhost:5000/invitations/' + invite.Event.id + '/user/' + 1, 
+                    this.httpClient.put( this.global.hostname + 'invitations/' + invite.Event.id + '/user/' + 1, 
                     { confirm: false },
                     this.httpOptions).subscribe(data => {
                         console.log(data)
@@ -85,7 +86,7 @@ export class Response {
                 cssClass: 'confirmed',
                 handler: () => {
                     console.log( '2' )
-                    this.httpClient.put('http://localhost:5000/invitations/' + invite.Event.id + '/user/' + 1, 
+                    this.httpClient.put('invitations/' + invite.Event.id + '/user/' + 1, 
                     { confirm: true },
                     this.httpOptions).subscribe(data => {
                         console.log(data)
