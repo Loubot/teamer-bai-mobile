@@ -26,7 +26,7 @@ export class HomePage {
     
    
     constructor( public navCtrl: NavController, public httpClient: HttpClient, private storage: Storage, public global: HostnameProvider ) {
-        
+        console.log( this.global.hostname )
         this.httpClient.post( this.global.hostname + 'login', {
             email: 'lllouis@yahoo.com',
             password: 'pass'
