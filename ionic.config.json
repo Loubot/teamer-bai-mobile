@@ -7,7 +7,7 @@
   "proxies": [
     {
       
-      "proxyUrl": "http://localhost:5000"
+      "proxyUrl": "https://teamer-bai.herokuapp.com/"
     }
   ]
 
