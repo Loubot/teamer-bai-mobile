@@ -6,8 +6,8 @@
   "type": "ionic-angular",
   "proxies": [
     {
-      
-      "proxyUrl": "https://teamer-bai.herokuapp.com/"
+      "path": "/",
+      "proxyUrl": "https://teamer-bai.herokuapp.com"
     }
   ]
 

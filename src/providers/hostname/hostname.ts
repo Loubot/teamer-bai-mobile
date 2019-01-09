@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class HostnameProvider {
   
   // public hostname = 'http://localhost:5000/'
-  public hostname = 'https://teamer-bai.herokuapp.com/'
+  public hostname = 'https://teamer-bai.herokuapp.com'
   
   
 

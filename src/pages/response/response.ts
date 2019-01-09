@@ -47,7 +47,7 @@ export class Response {
                     'Authorization': "Bearer " + this.token
                 })
             };
-            this.httpClient.get( '/invitations/user/1', this.httpOptions ).subscribe(data => {
+            this.httpClient.get( this.global.hostname + '/invitations/user/1', this.httpOptions ).subscribe(data => {
                 console.log(data)
                 this.invitations = data
 
@@ -86,7 +86,7 @@ export class Response {
                 cssClass: 'confirmed',
                 handler: () => {
                     console.log( '2' )
-                    this.httpClient.put( '/invitations/' + invite.Event.id + '/user/' + 1, 
+                    this.httpClient.put( this.global.hostname + '/invitations/' + invite.Event.id + '/user/' + 1, 
                     { confirm: true },
                     this.httpOptions).subscribe(data => {
                         console.log(data)
