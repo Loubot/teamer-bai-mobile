@@ -78,13 +78,10 @@ export class Response {
                 role: 'destructive',
                 cssClass: 'not_confirmed',
                 handler: () => {
-<<<<<<< HEAD
+
                     // console.log( '1' )
                     this.httpClient.put( this.global.hostname + '/invitations/' + invite.id + '/user/' + 1, 
-=======
-                    console.log( '1' )
-                    this.httpClient.put( this.global.hostname + 'invitations/' + invite.Event.id + '/user/' + 1, 
->>>>>>> master
+
                     { confirm: false },
                     this.httpOptions).subscribe(data => {
                         console.log(data)
@@ -96,13 +93,10 @@ export class Response {
                 text: 'Accept',
                 cssClass: 'confirmed',
                 handler: () => {
-<<<<<<< HEAD
+
                     // console.log( '2' )
                     this.httpClient.put( this.global.hostname + '/invitations/' + invite.id + '/user/' + 1, 
-=======
-                    console.log( '2' )
-                    this.httpClient.put( this.global.hostname + 'invitations/' + invite.Event.id + '/user/' + 1, 
->>>>>>> master
+
                     { confirm: true },
                     this.httpOptions).subscribe(data => {
                         console.log(data)
