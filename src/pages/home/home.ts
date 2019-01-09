@@ -52,6 +52,8 @@ export class HomePage {
             this.storage.set( 'token', data )
             
             this.navCtrl.push(Response)
+            alert( 'a' )
+            alert( data )
         })
     }
 
