@@ -17,6 +17,7 @@ import {
     hasLifecycleHook
 } from '@angular/compiler/src/lifecycle_reflector';
 import { HostnameProvider } from '../../providers/hostname/hostname'
+import { JsonPipe } from '@angular/common';
 
 @Component({
     selector: 'Response',
@@ -27,6 +28,7 @@ export class Response {
     httpOptions = null
     invitation = null
     invitations = null
+    bla = null
     presentActionSheet = null
     constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient,
 
@@ -49,7 +51,7 @@ export class Response {
 
             console.log(data)
             this.invitations = data
-
+            this.bla = JSON.stringify( this.invitations )
         })
 
     }
