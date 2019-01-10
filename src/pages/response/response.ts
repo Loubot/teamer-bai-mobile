@@ -9,9 +9,6 @@ import {
     HttpClient,
     HttpHeaders
 } from '@angular/common/http';
-import {
-    Storage
-} from '@ionic/storage';
 
 import {
     ActionSheetController
@@ -19,8 +16,6 @@ import {
 import {
     hasLifecycleHook
 } from '@angular/compiler/src/lifecycle_reflector';
-import { HostnameProvider } from '../../providers/hostname/hostname';
-
 import { HostnameProvider } from '../../providers/hostname/hostname'
 
 @Component({
@@ -33,7 +28,7 @@ export class Response {
     invitation = null
     invitations = null
     presentActionSheet = null
-    constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, private storage: Storage,
+    constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient,
 
         public actionSheetCtrl: ActionSheetController, public global: HostnameProvider ) {
 
@@ -43,21 +38,18 @@ export class Response {
         //     console.log( user )
         // })
 
-        this.storage.get('token').then(data => {
-            this.token = data
-            this.httpOptions = {
-                headers: new HttpHeaders({
-                    'Content-Type': 'application/json',
-                    'Authorization': "Bearer " + this.token
-                })
-            };
-
-            this.httpClient.get( this.global.hostname + '/invitations/user/1', this.httpOptions ).subscribe(data => {
-
-                console.log(data)
-                this.invitations = data
-
+        this.token = window.localStorage.getItem( 'token' )
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + this.token
             })
+        };
+        this.httpClient.get( this.global.hostname + '/invitations/user/1', this.httpOptions ).subscribe(data => {
+
+            console.log(data)
+            this.invitations = data
+
         })
 
     }

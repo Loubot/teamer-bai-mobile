@@ -12,10 +12,6 @@ import {
     Response
 } from '../response/response'
 
-import {
-    Storage
-} from '@ionic/storage';
-
 import { HostnameProvider } from '../../providers/hostname/hostname'
 
 @Component({
@@ -25,7 +21,7 @@ import { HostnameProvider } from '../../providers/hostname/hostname'
 export class HomePage {
     
    
-    constructor( public navCtrl: NavController, public httpClient: HttpClient, private storage: Storage, public global: HostnameProvider ) {
+    constructor( public navCtrl: NavController, public httpClient: HttpClient, public global: HostnameProvider ) {
 
         console.log( this.global.hostname )
         this.httpClient.post( this.global.hostname + '/login', {
@@ -35,8 +31,8 @@ export class HomePage {
         }, {}).subscribe( data => {
             console.log( data)
             // console.log( this.global.hostname )
-            this.storage.set( 'token', data[0] )
-            this.storage.set( 'user', data[1] )
+            window.localStorage.setItem( 'token', data[0] )
+            window.localStorage.setItem( 'user', data[1] )
             this.navCtrl.push(Response)
         })
 
@@ -53,7 +49,8 @@ export class HomePage {
             password: this.login.password
         }, {}).subscribe(data => {
             console.log(data)
-            this.storage.set( 'token', data )
+            window.localStorage.setItem( 'token', data[0] )
+            window.localStorage.setItem( 'user', data[1] )
             
             this.navCtrl.push(Response)
             alert( 'a' )

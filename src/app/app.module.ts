@@ -9,7 +9,6 @@ import { Response } from '../pages/response/response';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
-import { IonicStorageModule } from '@ionic/storage';
 import { HostnameProvider } from '../providers/hostname/hostname'
 
 
@@ -23,7 +22,6 @@ import { HostnameProvider } from '../providers/hostname/hostname'
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
