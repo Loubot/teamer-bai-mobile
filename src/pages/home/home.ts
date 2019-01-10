@@ -33,6 +33,7 @@ export class HomePage {
             // console.log( this.global.hostname )
             window.localStorage.setItem( 'token', data[0] )
             window.localStorage.setItem( 'user', data[1] )
+            console.log( window.localStorage.getItem( 'token' ) )
             this.navCtrl.push(Response)
         })
 

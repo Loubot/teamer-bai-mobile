@@ -41,9 +41,11 @@ export class Response {
         // })
 
         this.token = window.localStorage.getItem( 'token' )
+        console.log( this.token )
         this.httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
+                'Accept': 'application/json',
                 'Authorization': "Bearer " + this.token
             })
         };
