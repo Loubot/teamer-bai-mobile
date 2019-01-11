@@ -39,9 +39,10 @@ export class Response {
         // this.storage.get( 'user' ).then( user => {
         //     console.log( user )
         // })
-
+        console.log( 'wooho' )
         this.storage.get('token').then(data => {
             this.token = data
+            console.log( this.token )
             this.httpOptions = {
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
