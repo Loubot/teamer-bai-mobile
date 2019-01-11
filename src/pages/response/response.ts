@@ -46,17 +46,10 @@ export class Response {
             console.log( this.token )
             this.token = window.localStorage.getItem( 'token' )
             console.log( this.token )
-            this.httpOptions = {
-                headers: new HttpHeaders({
-                    'Content-Type': 'application/json',
-                    'Authorization': "Bearer " + this.token
-                })
-            };
+           const headers = new HttpHeaders().set( 'Content-Type', 'application/json').set( 'Authorization', "Bearer " + this.token )
+           
             this.httpClient.get( this.global.hostname + 'invitations/user/1', 
-                { headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': "Bearer " + this.token
-                }}).subscribe(data => {
+                { headers }).subscribe(data => {
                 console.log(data)
                 this.invitations = data
 
