@@ -10,6 +10,8 @@ import {
     HttpHeaders
 } from '@angular/common/http';
 
+import { HTTP } from '@ionic-native/http'
+
 import {
     ActionSheetController
 } from 'ionic-angular';
@@ -32,7 +34,7 @@ export class Response {
     presentActionSheet = null
     constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient,
 
-        public actionSheetCtrl: ActionSheetController, public global: HostnameProvider ) {
+        private http: HTTP, public actionSheetCtrl: ActionSheetController, public global: HostnameProvider ) {
 
         // If we navigated to this page, we will have an item available as a nav param
 
@@ -49,6 +51,16 @@ export class Response {
                 'Authorization': "Bearer " + this.token
             })
         };
+
+        // this.http.get( this.global.hostname + '/invitations/user/1', {}, {
+        //     Authorization: "Bearer " + this.token,
+        //     'Content-Type': 'application/json'
+        // }).then( res => {
+        //     console.log( JSON.parse( res.data ) )
+        //     this.invitations = JSON.parse( res.data )
+        // }).catch( err => {
+        //     console.log( err )
+        // })
         this.httpClient.get( this.global.hostname + '/invitations/user/1', this.httpOptions ).subscribe(data => {
 
             console.log(data)
