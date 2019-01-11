@@ -74,7 +74,7 @@ export class Response {
                 cssClass: 'not_confirmed',
                 handler: () => {
                     console.log( '1' )
-                    this.httpClient.put( this.global.hostname + 'invitations/' + invite.Event.id + '/user/' + 1, 
+                    this.httpClient.put( this.global.hostname + 'invitations/' + invite.id + '/user/' + 1, 
                     { confirm: false },
                     this.httpOptions).subscribe(data => {
                         console.log(data)

@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { HostnameProvider } from '../providers/hostname/hostname'
+import { HTTP } from '@ionic-native/http';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { HostnameProvider } from '../providers/hostname/hostname'
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,7 +36,9 @@ import { HostnameProvider } from '../providers/hostname/hostname'
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HostnameProvider
+    HostnameProvider,
+    HTTP
+
   ]
 })
 export class AppModule {}

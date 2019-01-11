@@ -18,6 +18,8 @@ import {
 
 import { HostnameProvider } from '../../providers/hostname/hostname'
 
+import { HTTP } from '@ionic-native/http';
+
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
