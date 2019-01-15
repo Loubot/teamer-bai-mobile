@@ -29,19 +29,19 @@ export class HomePage {
    
     constructor( public navCtrl: NavController, public httpClient: HttpClient, private storage: Storage, public global: HostnameProvider ) {
         
-        this.httpClient.post( this.global.hostname + 'login', {
-            email: 'lllouis@yahoo.com',
-            password: 'pass'
-        }, {}).subscribe( data => {
-            console.log( data)
-            // console.log( this.global.hostname )
-            // window.localStorage.setItem( 'token', data[0] )
-            this.storage.set( 'user_token', {
-                token: data[ 0 ],
-                user: data[ 1 ]
-            } )
-            this.navCtrl.push(Response)
-        })
+        // this.httpClient.post( this.global.hostname + 'login', {
+        //     email: 'lllouis@yahoo.com',
+        //     password: 'pass'
+        // }, {}).subscribe( data => {
+        //     console.log( data)
+        //     // console.log( this.global.hostname )
+        //     // window.localStorage.setItem( 'token', data[0] )
+        //     this.storage.set( 'user_token', {
+        //         token: data[ 0 ],
+        //         user: data[ 1 ]
+        //     } )
+        //     this.navCtrl.push(Response)
+        // })
 
     }
     public login = {
