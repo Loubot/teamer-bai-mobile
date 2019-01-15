@@ -20,7 +20,9 @@ import {
     hasLifecycleHook
 } from '@angular/compiler/src/lifecycle_reflector';
 
-import { HostnameProvider } from '../../providers/hostname/hostname'
+import {
+    HostnameProvider
+} from '../../providers/hostname/hostname'
 
 @Component({
     selector: 'Response',
@@ -39,15 +41,25 @@ export class Response {
         // this.storage.get( 'user' ).then( user => {
         //     console.log( user )
         // })
-        console.log( 'wooho' )
-        
+        // console.log('wooho')
+        // this.token = window.localStorage.getItem('token')
+        // console.log(this.token)
+        // const headers = new HttpHeaders().set('Authorization', "Bearer " + this.token)
+
+        // this.httpClient.get(this.global.hostname + 'invitations/user/1', {
+        //     headers
+        // }).subscribe(data => {
+        //     console.log(data)
+        //     this.invitations = data
+
+        // })
         this.storage.get('token').then(data => {
             this.token = data
             console.log( this.token )
-            this.token = window.localStorage.getItem( 'token' )
-            console.log( this.token )
+            // this.token = window.localStorage.getItem( 'token' )
+            // console.log( this.token )
            const headers = new HttpHeaders().set( 'Authorization', "Bearer " + this.token )
-           
+
             this.httpClient.get( this.global.hostname + 'invitations/user/1', 
                 { headers }).subscribe(data => {
                 console.log(data)
@@ -60,7 +72,7 @@ export class Response {
 
 
     respond_to_invite(invite) {
-        console.log(invite)
+        console.log(invite.id)
         this.httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -74,10 +86,11 @@ export class Response {
                 role: 'destructive',
                 cssClass: 'not_confirmed',
                 handler: () => {
-                    console.log( '1' )
-                    this.httpClient.put( this.global.hostname + 'invitations/' + invite.id + '/user/' + 1, 
-                    { confirm: false },
-                    this.httpOptions).subscribe(data => {
+                    console.log(this.global.hostname + 'invitations/' + invite.id + '/user/' + 1)
+                    this.httpClient.put(this.global.hostname + 'invitations/' + invite.id + '/user/' + 1, {
+                            confirm: false
+                        },
+                        this.httpOptions).subscribe(data => {
                         console.log(data)
                         this.invitations = data
 
@@ -87,10 +100,11 @@ export class Response {
                 text: 'Accept',
                 cssClass: 'confirmed',
                 handler: () => {
-                    console.log( '2' )
-                    this.httpClient.put( this.global.hostname + 'invitations/' + invite.Event.id + '/user/' + 1, 
-                    { confirm: true },
-                    this.httpOptions).subscribe(data => {
+                    console.log('2')
+                    this.httpClient.put(this.global.hostname + 'invitations/' + invite.id + '/user/' + 1, {
+                            confirm: true
+                        },
+                        this.httpOptions).subscribe(data => {
                         console.log(data)
                         this.invitations = data
 
