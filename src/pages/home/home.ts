@@ -36,8 +36,10 @@ export class HomePage {
             console.log( data)
             // console.log( this.global.hostname )
             // window.localStorage.setItem( 'token', data[0] )
-            this.storage.set( 'token', data[0] )
-            this.storage.set( 'user', data[1] )
+            this.storage.set( 'user_token', {
+                token: data[ 0 ],
+                user: data[ 1 ]
+            } )
             this.navCtrl.push(Response)
         })
 

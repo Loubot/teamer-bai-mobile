@@ -34,6 +34,7 @@ export class Response {
     invitation = null
     invitations = null
     presentActionSheet = null
+    user = null
     constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, private storage: Storage,
         public actionSheetCtrl: ActionSheetController, public global: HostnameProvider) {
         // If we navigated to this page, we will have an item available as a nav param
@@ -53,9 +54,12 @@ export class Response {
         //     this.invitations = data
 
         // })
-        this.storage.get('token').then(data => {
-            this.token = data
+        
+        this.storage.get('user_token').then( data => {
+            this.token = data.token
             console.log( this.token )
+            this.user = data.user
+            console.log( this.user )
             // this.token = window.localStorage.getItem( 'token' )
             // console.log( this.token )
            const headers = new HttpHeaders().set( 'Authorization', "Bearer " + this.token )
@@ -86,8 +90,8 @@ export class Response {
                 role: 'destructive',
                 cssClass: 'not_confirmed',
                 handler: () => {
-                    console.log(this.global.hostname + 'invitations/' + invite.id + '/user/' + 1)
-                    this.httpClient.put(this.global.hostname + 'invitations/' + invite.id + '/user/' + 1, {
+                    console.log(this.global.hostname + 'invitations/' + invite.id + '/user/' +  this.user.id)
+                    this.httpClient.put(this.global.hostname + 'invitations/' + invite.id + '/user/' + this.user.id, {
                             confirm: false
                         },
                         this.httpOptions).subscribe(data => {
@@ -101,7 +105,7 @@ export class Response {
                 cssClass: 'confirmed',
                 handler: () => {
                     console.log('2')
-                    this.httpClient.put(this.global.hostname + 'invitations/' + invite.id + '/user/' + 1, {
+                    this.httpClient.put(this.global.hostname + 'invitations/' + invite.id + '/user/' + this.user.id, {
                             confirm: true
                         },
                         this.httpOptions).subscribe(data => {
