@@ -64,7 +64,7 @@ export class Response {
             // console.log( this.token )
            const headers = new HttpHeaders().set( 'Authorization', "Bearer " + this.token )
 
-            this.httpClient.get( this.global.hostname + 'invitations/user/1', 
+            this.httpClient.get( this.global.hostname + 'invitations/user/' + this.user.id, 
                 { headers }).subscribe(data => {
                 console.log(data)
                 this.invitations = data

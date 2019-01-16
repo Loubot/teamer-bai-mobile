@@ -54,11 +54,21 @@ export class HomePage {
             password: this.login.password
         }, {}).subscribe(data => {
             console.log(data)
-            this.storage.set( 'token', data )
+            this.storage.remove( 'token' ).then(() => {
+                console.log('token cleared')
+                this.storage.set( 'user_token', {
+                token: data[ 0 ],
+                user: data[ 1 ]
+            } ).then( () => {
+                console.log( 'token set' )
+                this.navCtrl.push(Response)
+            })
             
-            this.navCtrl.push(Response)
-            alert( 'a' )
-            alert( data )
+                // this.navCtrl.push(Response)
+            }).catch( err => {
+                console.log( err )
+            })
+            
         })
     }
 
