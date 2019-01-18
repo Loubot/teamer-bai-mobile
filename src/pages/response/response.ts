@@ -30,7 +30,6 @@ export class Response {
     httpOptions = null
     invitation = null
     invitations = null
-    bla = null
     presentActionSheet = null
     constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient,
 
@@ -65,7 +64,6 @@ export class Response {
 
             console.log(data)
             this.invitations = data
-            this.bla = JSON.stringify( this.invitations )
         })
 
     }
