@@ -19,6 +19,7 @@ import {
 import { HostnameProvider } from '../../providers/hostname/hostname'
 
 import { HTTP } from '@ionic-native/http';
+import { PasswordPage } from '../password/password';
 
 @Component({
     selector: 'page-home',
@@ -29,19 +30,19 @@ export class HomePage {
    
     constructor( public navCtrl: NavController, public httpClient: HttpClient, private storage: Storage, public global: HostnameProvider ) {
         
-        // this.httpClient.post( this.global.hostname + 'login', {
-        //     email: 'lllouis@yahoo.com',
-        //     password: 'pass'
-        // }, {}).subscribe( data => {
-        //     console.log( data)
-        //     // console.log( this.global.hostname )
-        //     // window.localStorage.setItem( 'token', data[0] )
-        //     this.storage.set( 'user_token', {
-        //         token: data[ 0 ],
-        //         user: data[ 1 ]
-        //     } )
-        //     this.navCtrl.push(Response)
-        // })
+        this.httpClient.post( this.global.hostname + 'login', {
+            email: 'lllouis@yahoo.com',
+            password: 'pass'
+        }, {}).subscribe( data => {
+            console.log( data)
+            // console.log( this.global.hostname )
+            // window.localStorage.setItem( 'token', data[0] )
+            this.storage.set( 'user_token', {
+                token: data[ 0 ],
+                user: data[ 1 ]
+            } )
+            this.navCtrl.push(PasswordPage)
+        })
 
     }
     public login = {
@@ -61,7 +62,7 @@ export class HomePage {
                 user: data[ 1 ]
             } ).then( () => {
                 console.log( 'token set' )
-                this.navCtrl.push(Response)
+                this.navCtrl.push(PasswordPage)
             })
             
                 // this.navCtrl.push(Response)

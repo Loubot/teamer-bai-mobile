@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Response } from '../pages/response/response';
+import { PasswordPage } from '../pages/password/password'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +19,8 @@ import { HTTP } from '@ionic-native/http';
   declarations: [
     MyApp,
     HomePage,
-    Response
+    Response,
+    PasswordPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { HTTP } from '@ionic-native/http';
   entryComponents: [
     MyApp,
     HomePage,
-    Response
+    Response,
+    PasswordPage
   ],
   providers: [
     StatusBar,

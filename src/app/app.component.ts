@@ -20,6 +20,8 @@ import {
     Response
 } from '../pages/response/response';
 
+import { PasswordPage } from '../pages/password/password'
+
 @Component({
     templateUrl: 'app.html'
 })
@@ -44,6 +46,10 @@ export class MyApp {
             {
                 title: 'Response',
                 component: Response
+            },
+            {
+                title: 'Password',
+                component: PasswordPage
             }
         ];
 

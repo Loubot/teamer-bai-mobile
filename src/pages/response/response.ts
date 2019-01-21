@@ -24,6 +24,7 @@ import {
     HostnameProvider
 } from '../../providers/hostname/hostname'
 
+
 @Component({
     selector: 'Response',
     templateUrl: 'response.html'
@@ -34,6 +35,7 @@ export class Response {
     invitation = null
     invitations = null
     presentActionSheet = null
+    mycontent = null
     user = null
     constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, private storage: Storage,
         public actionSheetCtrl: ActionSheetController, public global: HostnameProvider) {
@@ -72,6 +74,12 @@ export class Response {
             })
         })
 
+        
+
+    }
+
+    openPage( a ){
+        console.log( a )
     }
 
 
