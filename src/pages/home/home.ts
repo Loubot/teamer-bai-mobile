@@ -41,7 +41,7 @@ export class HomePage {
                 token: data[ 0 ],
                 user: data[ 1 ]
             } )
-            this.navCtrl.push(PasswordPage)
+            this.navCtrl.push( Response )
         })
 
     }
@@ -62,7 +62,7 @@ export class HomePage {
                 user: data[ 1 ]
             } ).then( () => {
                 console.log( 'token set' )
-                this.navCtrl.push(PasswordPage)
+                this.navCtrl.push( Response )
             })
             
                 // this.navCtrl.push(Response)

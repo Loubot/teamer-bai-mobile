@@ -84,7 +84,7 @@ export class Response {
 
 
     respond_to_invite(invite) {
-        console.log(invite.id)
+        console.log(invite)
         this.httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -100,7 +100,8 @@ export class Response {
                 handler: () => {
                     console.log(this.global.hostname + 'invitations/' + invite.id + '/user/' +  this.user.id)
                     this.httpClient.put(this.global.hostname + 'invitations/' + invite.id + '/user/' + this.user.id, {
-                            confirm: false
+                            confirm: false,
+                            Event: invite.Event
                         },
                         this.httpOptions).subscribe(data => {
                         console.log(data)
@@ -114,7 +115,8 @@ export class Response {
                 handler: () => {
                     console.log('2')
                     this.httpClient.put(this.global.hostname + 'invitations/' + invite.id + '/user/' + this.user.id, {
-                            confirm: true
+                            confirm: true,
+                            Event: invite.Event
                         },
                         this.httpOptions).subscribe(data => {
                         console.log(data)
