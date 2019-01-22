@@ -24,6 +24,8 @@ import {
     HostnameProvider
 } from '../../providers/hostname/hostname'
 
+import { AlertController } from 'ionic-angular';
+
 
 @Component({
     selector: 'Response',
@@ -38,7 +40,7 @@ export class Response {
     mycontent = null
     user = null
     constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, private storage: Storage,
-        public actionSheetCtrl: ActionSheetController, public global: HostnameProvider) {
+        public actionSheetCtrl: ActionSheetController, public global: HostnameProvider, private alertCtrl: AlertController ) {
         // If we navigated to this page, we will have an item available as a nav param
 
         // this.storage.get( 'user' ).then( user => {
