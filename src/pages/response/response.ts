@@ -134,6 +134,16 @@ export class Response {
                 }
             }]
         }).present()
-    }
+    } 
+    //  end of respond_to_invite
 
+    checkMatchCss( invite ) {
+        if ( invite.confirm && invite.Event.gameOn ){
+            return 'confirmed'
+        } else if ( invite.confirm ) {
+            return 'waiting_on_numbers'
+        } else {
+            return 'not_confirmed'
+        }
+    }
 }
